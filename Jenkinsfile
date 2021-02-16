@@ -1,10 +1,20 @@
 node {
+  
+  def mvnHome
+  
   stage("Preparation") {
-    echo "------"
+    git 'https://github.com/EriksonMurrugarra/docker-java-ibk.git'  
+    
+    mvnHome = tool 'MAVEN3'
+    
   }
 
   stage("Build") {
-    echo "------"
+    
+    withEnv(["MVN_HOME=$mvnHome]) {
+      bat "%MAVEN_HOME%\bin\mvn clean install"
+    }
+      
   }
 
   stage("Test") {
