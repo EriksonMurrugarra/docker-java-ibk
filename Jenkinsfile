@@ -11,7 +11,7 @@ node {
 
   stage("Build") {
     
-    withEnv(["MVN_HOME=$mvnHome]) {
+    withEnv(["MVN_HOME=$mvnHome"]) {
       bat "%MAVEN_HOME%\bin\mvn clean install"
     }
       
